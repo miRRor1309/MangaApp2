@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addControls();
-        //test cmt 1
+        //test cmt 2
     }
 
     private void addControls() {
