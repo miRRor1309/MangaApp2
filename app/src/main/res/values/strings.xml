@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">MangaApp</string>
     <string name="action_search">Search</string>
+    <string-array name="ar_tenTruyen">
+        <item>Võ Luyện Đỉnh Phong</item>
+        <item>Đao Kiếm Thần Vực</item>
+        <item>Nguyên Tôn</item>
+        <item>Toàn Chức Pháp Sư</item>
 
+    </string-array>
 </resources>

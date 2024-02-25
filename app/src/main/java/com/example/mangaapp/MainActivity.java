@@ -9,6 +9,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.ArrayAdapter;
 
 import com.example.mangaapp.adapter.MangaAdapter;
 import com.example.mangaapp.model.Manga;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewManga;
     private MangaAdapter mangaAdapter;
     private SearchView searchView;
+    ArrayAdapter adapterData2;
+    String arr[];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
 
         mangaAdapter = new MangaAdapter(getMangaList());
         recyclerViewManga.setAdapter(mangaAdapter);
+        //gan du lieu vao arr
+        arr=getResources().getStringArray(R.array.ar_tenTruyen);
+        adapterData2=new ArrayAdapter<>(MainActivity.this,R.layout.item_truyen,arr);
     }
 
     private List<Manga> getMangaList() {
