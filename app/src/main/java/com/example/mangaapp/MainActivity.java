@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.example.mangaapp.adapter.MangaAdapter;
 import com.example.mangaapp.model.Manga;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    TextView txt_Username;
     private RecyclerView recyclerViewManga;
     private MangaAdapter mangaAdapter;
     private SearchView searchView;
@@ -36,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
         //test cmt 2
     }
 
+
+
     private void addControls() {
+        txt_Username=findViewById(R.id.txt_UserName);
         recyclerViewManga = findViewById(R.id.recyclerViewManga);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
         recyclerViewManga.setLayoutManager(gridLayoutManager);
