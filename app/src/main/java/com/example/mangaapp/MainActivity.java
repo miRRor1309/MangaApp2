@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewManga;
     private MangaAdapter mangaAdapter;
     private SearchView searchView;
-    ArrayAdapter adapterData2;
+    ArrayAdapter adapterData;
     String arr[];
 
     @Override
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewManga.setAdapter(mangaAdapter);
         //gan du lieu vao arr
         arr=getResources().getStringArray(R.array.ar_tenTruyen);
-        adapterData2=new ArrayAdapter<>(MainActivity.this,R.layout.item_truyen,arr);
+        adapterData=new ArrayAdapter<>(MainActivity.this,R.layout.item_truyen,arr);
     }
 
     private List<Manga> getMangaList() {
