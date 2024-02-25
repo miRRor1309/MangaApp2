@@ -4,12 +4,13 @@
     <string-array name="ar_tenTruyen">
 
         <item>Toàn Chức Pháp Sư</item>
-
+        <item>Võ Luyện Đỉnh Phong</item>
         <item>Đao Kiếm Thần Vực</item>
-
         <item>Nguyên Tôn</item>
 
-        <item>Võ Luyện Đỉnh Phong</item>
+
+
+
 
     </string-array>
 </resources>
