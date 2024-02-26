@@ -21,7 +21,7 @@
 
         <EditText
             android:id="@+id/txt_TenUser"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="60dp"
             android:gravity="left"
             android:hint="Tên đăng nhập"
@@ -29,7 +29,7 @@
 
         <EditText
             android:id="@+id/txt_Pass"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="60dp"
             android:gravity="left"
             android:hint="Mật khẩu"
@@ -45,14 +45,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
-                android:text="Đăng nhập" />
+                android:background="@drawable/bg_button"
+                android:text="Đăng nhập"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/btn_Cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
-                android:text="huỷ" />
+                android:background="@drawable/bg_button"
+                android:text="huỷ"
+                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>
@@ -79,10 +83,10 @@
             android:id="@+id/btn_goToRegister"
             android:layout_width="70dp"
             android:layout_height="50dp"
-            android:background="@android:drawable/btn_default"
+            android:background="@drawable/bg_button_dk"
             android:padding="0.5sp"
             android:text="Đăng kí"
-            android:textColor="#FF0000"
+            android:textColor="#FFFFFF"
             android:textSize="11sp" />
 
     </LinearLayout>
