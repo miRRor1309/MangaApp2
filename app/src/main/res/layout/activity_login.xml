@@ -4,13 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/bg_pic2"
     tools:context=".LoginActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="147dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/pic12"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.076">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/black"
+        android:text="Đồ án mưu sinh"
+        android:textAlignment="center"
+        android:textColor="#CCF9FD"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="417dp"
+        android:layout_height="293dp"
+        android:background="@drawable/bg_edt_dk"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="60dp"
@@ -20,20 +50,22 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/txt_TenUser"
+            android:id="@+id/edt_TenUser"
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:gravity="left"
             android:hint="Tên đăng nhập"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColorHint="#000000" />
 
         <EditText
-            android:id="@+id/txt_Pass"
+            android:id="@+id/edt_Pass"
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:gravity="left"
             android:hint="Mật khẩu"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColorHint="#000000" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
                 android:background="@drawable/bg_button"
+                android:shadowColor="#3A3A3A"
                 android:text="Đăng nhập"
                 android:textColor="#FFFFFF" />
 
@@ -62,22 +95,23 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="136dp"
         android:orientation="horizontal"
         android:paddingLeft="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:text="chưa có tài khoản?" />
+            android:text="chưa có tài khoản?"
+            android:textColor="#FFFFFF" />
 
         <Button
             android:id="@+id/btn_goToRegister"
@@ -85,6 +119,7 @@
             android:layout_height="50dp"
             android:background="@drawable/bg_button_dk"
             android:padding="0.5sp"
+            android:layout_marginLeft="10sp"
             android:text="Đăng kí"
             android:textColor="#FFFFFF"
             android:textSize="11sp" />

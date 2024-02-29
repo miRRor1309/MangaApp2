@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         mangaAdapter = new MangaAdapter(getMangaList());
         recyclerViewManga.setAdapter(mangaAdapter);
-        //gan du lieu vao arr
-        arr=getResources().getStringArray(R.array.ar_tenTruyen);
-        adapterData1=new ArrayAdapter<>(MainActivity.this,R.layout.item_truyen,arr);
     }
 
     private List<Manga> getMangaList() {
@@ -99,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.menuLogin)
         {
-            Intent i=new Intent(MainActivity.this ,LoginActivity.class);
+            Intent i=new Intent(MainActivity.this ,UserInfoActivity.class);
             startActivity(i);
         }
         return super.onOptionsItemSelected(item);

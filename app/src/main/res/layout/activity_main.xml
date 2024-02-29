@@ -83,8 +83,8 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="308dp"
+                android:layout_width="353dp"
+                android:layout_height="79dp"
                 android:layout_margin="20dp"
                 android:background="@drawable/hello_start">
 
@@ -92,55 +92,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="1dp"
-                        android:orientation="horizontal"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="150dp"
-                            android:layout_height="120dp"
-                            android:layout_marginEnd="5dp"
-                            android:background="@drawable/hello_button_start" />
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="150dp"
-                            android:layout_height="120dp"
-                            android:layout_marginEnd="5dp"
-                            android:background="@drawable/hello_button_start">
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="5dp"
-                        android:orientation="vertical">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="303dp"
-                            android:layout_height="127dp"
-                            android:layout_marginStart="18dp"
-                            android:background="@drawable/hello_button_start" />
-                    </LinearLayout>
-                </LinearLayout>
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewManga"
                 android:layout_width="320dp"
-                android:layout_height="wrap_content"
+                android:layout_height="525dp"
                 android:layout_marginStart="40dp">
 
             </androidx.recyclerview.widget.RecyclerView>

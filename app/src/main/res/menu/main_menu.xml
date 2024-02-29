@@ -13,4 +13,9 @@
         android:icon="@drawable/user1"
         android:title="Login/Register"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/menuTheLoai"
+        android:icon="@drawable/menu"
+        android:title="Login/Register"
+        app:showAsAction="always"/>
 </menu>
