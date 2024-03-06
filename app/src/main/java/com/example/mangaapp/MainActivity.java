@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         processCopy();
         addControls();
-        //test connect 1
+        //test connect 2
     }
 
     public String getDatabasePath(){
