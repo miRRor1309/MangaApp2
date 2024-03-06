@@ -106,7 +106,8 @@ public class MainActivity extends AppCompatActivity {
             //Integer ma = cursor.getInt(0);
             String ten = cursor.getString(1);
             String chap = cursor.getString(2);
-            list.add(new Manga(chap,ten,R.drawable.a1));
+            byte[] hinh = cursor.getBlob(3);
+            list.add(new Manga(chap,ten,hinh));
             cursor.moveToNext();
         }
         cursor.close();

@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class Manga implements Serializable {
     private String tenchap, tentruyen;
-    private int imgtruyen;
+    private byte[] imgtruyen;
 
     public Manga(){
 
     }
-    public Manga(String tenchap, String tentruyen, int imgtruyen) {
+    public Manga(String tenchap, String tentruyen, byte[] imgtruyen) {
         this.tenchap = tenchap;
         this.tentruyen = tentruyen;
         this.imgtruyen = imgtruyen;
@@ -31,11 +31,11 @@ public class Manga implements Serializable {
         this.tentruyen = tentruyen;
     }
 
-    public int getImgtruyen() {
+    public byte[] getImgtruyen() {
         return imgtruyen;
     }
 
-    public void setImgtruyen(int imgtruyen) {
+    public void setImgtruyen(byte[] imgtruyen) {
         this.imgtruyen = imgtruyen;
     }
 }

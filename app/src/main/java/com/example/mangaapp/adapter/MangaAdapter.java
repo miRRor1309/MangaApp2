@@ -1,6 +1,8 @@
 package com.example.mangaapp.adapter;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,8 +43,11 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Manga mg = mangaList.get(position);
 
+            //Chuyen byte[] -> bitmap
+            byte[] hinhAnh = mg.getImgtruyen();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
+            holder.imgTruyen.setImageBitmap(bitmap);
 
-            holder.imgTruyen.setImageResource(mg.getImgtruyen());
             holder.txtChap.setText(mg.getTenchap());
             holder.txtTenTruyen.setText(mg.getTentruyen());
 
