@@ -31,7 +31,7 @@
     <TextView
         android:id="@+id/txtTenTruyen"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:text="Ten Truyen"
         android:padding="5dp"
         android:gravity="center"

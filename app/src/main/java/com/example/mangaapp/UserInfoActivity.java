@@ -22,8 +22,7 @@ public class UserInfoActivity extends AppCompatActivity {
         btn_quaylai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(UserInfoActivity.this ,MainActivity.class);
-                startActivity(i);
+                finish();
             }
         });
     }

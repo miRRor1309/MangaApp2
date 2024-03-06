@@ -9,16 +9,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mangaapp.adapter.MangaAdapter;
 import com.example.mangaapp.model.Manga;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,17 +35,55 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewManga;
     private MangaAdapter mangaAdapter;
     private SearchView searchView;
-    ArrayAdapter adapterData1;
-    String arr[];
+    public String DATABASE_NAME = "mangaappdb";
+    public String DB_SUFFIX_PATH = "/databases/";
+    public static SQLiteDatabase database = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        processCopy();
         addControls();
-        //test cmt 2
     }
 
+    public String getDatabasePath(){
+        return getApplicationInfo().dataDir + DB_SUFFIX_PATH + DATABASE_NAME;
+    }
+
+    private void processCopy() {
+        try{
+            File file = getDatabasePath(DATABASE_NAME);
+            if(!file.exists()){
+                coppyDatabaseFromAsset();
+                Toast.makeText(this,"Coppy Databse Success",Toast.LENGTH_SHORT).show();
+            }
+        }catch(Exception ex){
+            Toast.makeText(this,"Coppy Databse Fail",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void coppyDatabaseFromAsset() {
+        try{
+            InputStream inputFile = getAssets().open(DATABASE_NAME);
+            String outputFileName = getDatabasePath();
+            File file = new File(getApplicationInfo().dataDir + DB_SUFFIX_PATH);
+            if(!file.exists()){
+                file.mkdir();
+            }
+            OutputStream outputFile = new FileOutputStream(outputFileName);
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = inputFile.read(buffer)) > 0){
+                outputFile.write(buffer,0,length);
+            }
+            outputFile.flush();
+            outputFile.close();
+            inputFile.close();
+        }catch(Exception ex){
+            Log.e("Error",ex.toString());
+        }
+    }
 
 
     private void addControls() {
@@ -52,18 +98,17 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Manga> getMangaList() {
         List<Manga> list = new ArrayList<>();
-        list.add(new Manga("Chap 3689","Võ Luyện Đỉnh Phong",R.drawable.a1));
-        list.add(new Manga("Chap 14","Đao Kiếm Thần Vực",R.drawable.a2));
-        list.add(new Manga("Chap 801","Nguyên Tôn",R.drawable.a3));
-        list.add(new Manga("Chap 1158","Toàn Chức Pháp Sư",R.drawable.a4));
-        list.add(new Manga("Chap 3689","Võ Luyện Đỉnh Phong",R.drawable.a1));
-        list.add(new Manga("Chap 14","Đao Kiếm Thần Vực",R.drawable.a2));
-        list.add(new Manga("Chap 801","Nguyên Tôn",R.drawable.a3));
-        list.add(new Manga("Chap 1158","Toàn Chức Pháp Sư",R.drawable.a4));
-        list.add(new Manga("Chap 3689","Võ Luyện Đỉnh Phong",R.drawable.a1));
-        list.add(new Manga("Chap 14","Đao Kiếm Thần Vực",R.drawable.a2));
-        list.add(new Manga("Chap 801","Nguyên Tôn",R.drawable.a3));
-        list.add(new Manga("Chap 1158","Toàn Chức Pháp Sư",R.drawable.a4));
+        database = openOrCreateDatabase(DATABASE_NAME,MODE_PRIVATE,null);
+        Cursor cursor = database.rawQuery("select * from tblManga",null);
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            //Integer ma = cursor.getInt(0);
+            String ten = cursor.getString(1);
+            String chap = cursor.getString(2);
+            list.add(new Manga(chap,ten,R.drawable.a1));
+            cursor.moveToNext();
+        }
+        cursor.close();
         return list;
     }
 
