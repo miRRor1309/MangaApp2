@@ -50,8 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 if(pass.isEmpty())
                 {
-                    edt_TenUser.setCompoundDrawables(null,null,icERR,null);
-                    edt_TenUser.setError("Vui lòng nhập mật khẩu",icERR);
+                    edt_Pass.setCompoundDrawables(null,null,icERR,null);
+                    edt_Pass.setError("Vui lòng nhập mật khẩu",icERR);
                 }
                 if(!name.isEmpty() && !pass.isEmpty())
                 {
