@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText edt_Email,edt_Pass;
     Button btn_Login,btn_Cancel,btn_goToRegister;
+    private LinearLayout layoutForgotPassword;
 
     private FirebaseAuth mAuth;
     @Override
@@ -33,6 +35,25 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
+        layoutForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickForgotPassword();
+            }
+
+            private void onClickForgotPassword() {
+                Intent i= new Intent(LoginActivity.this, ForgotPassActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+
+
+
+
+
+
         mAuth=FirebaseAuth.getInstance();
 
         btn_Cancel.setOnClickListener(new View.OnClickListener() {
@@ -98,5 +119,6 @@ public class LoginActivity extends AppCompatActivity {
         btn_Login=findViewById(R.id.btn_Login);
         btn_Cancel=findViewById(R.id.btn_Cancel);
         btn_goToRegister=findViewById(R.id.btn_goToRegister);
+        layoutForgotPassword=findViewById(R.id.layout_forgot_pasword);
     }
 }
