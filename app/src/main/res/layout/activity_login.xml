@@ -50,11 +50,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-            android:id="@+id/edt_TenUser"
+            android:id="@+id/edt_Email"
             android:layout_width="280dp"
             android:layout_height="60dp"
             android:gravity="left"
-            android:hint="Tên đăng nhập"
+            android:hint="Email"
             android:inputType="text"
             android:textColorHint="#000000" />
 
