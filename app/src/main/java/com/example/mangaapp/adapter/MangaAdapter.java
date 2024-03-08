@@ -1,8 +1,11 @@
 package com.example.mangaapp.adapter;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +14,17 @@ import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mangaapp.MainActivity;
 import com.example.mangaapp.R;
+import com.example.mangaapp.StoryDescriptionActivity;
+import com.example.mangaapp._interface.IClickMangaListener;
 import com.example.mangaapp.model.Manga;
 
 import java.util.ArrayList;
@@ -26,10 +34,12 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.ViewHolder> 
     //khai bao bien
     private List<Manga> mangaList;
     private List<Manga> mangaListOld;
+    private IClickMangaListener iClickMangaListener;
 
-    public MangaAdapter(List<Manga> mangaList) {
+    public MangaAdapter(List<Manga> mangaList, IClickMangaListener listener) {
         this.mangaList = mangaList;
         this.mangaListOld = mangaList;
+        this.iClickMangaListener = listener;
     }
 
     @NonNull
@@ -41,16 +51,22 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Manga mg = mangaList.get(position);
+        final Manga mg = mangaList.get(position);
 
-            //Chuyen byte[] -> bitmap
-            byte[] hinhAnh = mg.getImgtruyen();
-            Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
-            holder.imgTruyen.setImageBitmap(bitmap);
+        //Chuyen byte[] -> bitmap
+        byte[] hinhAnh = mg.getImgtruyen();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
+        holder.imgTruyen.setImageBitmap(bitmap);
 
-            holder.txtChap.setText(mg.getTenchap());
-            holder.txtTenTruyen.setText(mg.getTentruyen());
+        holder.txtChap.setText(mg.getTenchap());
+        holder.txtTenTruyen.setText(mg.getTentruyen());
 
+        holder.layoutMangaItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                iClickMangaListener.onClickManga(mg);
+            }
+        });
     }
 
     @Override
@@ -97,11 +113,14 @@ public class MangaAdapter extends RecyclerView.Adapter<MangaAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imgTruyen;
         TextView txtChap, txtTenTruyen;
+        LinearLayout layoutMangaItem;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            layoutMangaItem = itemView.findViewById(R.id.layoutMangaItem);
             imgTruyen = itemView.findViewById(R.id.imgTruyen);
             txtChap = itemView.findViewById(R.id.txtChap);
             txtTenTruyen = itemView.findViewById(R.id.txtTenTruyen);
         }
     }
+
 }

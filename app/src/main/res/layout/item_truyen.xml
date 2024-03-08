@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="5dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:id="@+id/layoutMangaItem">
     <RelativeLayout
         android:layout_width="100dp"
         android:layout_height="180dp"

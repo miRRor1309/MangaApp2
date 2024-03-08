@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mangaapp._interface.IClickMangaListener;
 import com.example.mangaapp.adapter.MangaAdapter;
 import com.example.mangaapp.model.Manga;
 
@@ -48,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         processCopy();
         addControls();
-        //test connect 2
     }
 
     public String getDatabasePath(){
@@ -96,7 +96,12 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
         recyclerViewManga.setLayoutManager(gridLayoutManager);
 
-        mangaAdapter = new MangaAdapter(getMangaList());
+        mangaAdapter = new MangaAdapter(getMangaList(), new IClickMangaListener() {
+            @Override
+            public void onClickManga(Manga manga) {
+                onClickGoToDetail(manga);
+            }
+        });
         recyclerViewManga.setAdapter(mangaAdapter);
     }
 
@@ -110,7 +115,8 @@ public class MainActivity extends AppCompatActivity {
             String ten = cursor.getString(1);
             String chap = cursor.getString(2);
             byte[] hinh = cursor.getBlob(3);
-            list.add(new Manga(chap,ten,hinh));
+            String des = cursor.getString(4);
+            list.add(new Manga(chap,ten,hinh,des));
             cursor.moveToNext();
         }
         cursor.close();
@@ -164,6 +170,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
-
+    private void onClickGoToDetail(Manga mg) {
+        Intent intent = new Intent(this, StoryDescriptionActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("MangaObject", mg);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }
