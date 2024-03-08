@@ -38,7 +38,7 @@ public class ActionAdapter extends RecyclerView.Adapter<ActionAdapter.ViewHolder
         Action Act=arr_Action.get(position);
         holder.imgAction.setImageResource(Act.getHinhAc());
         holder.txtTenTruyen.setText(Act.getTentruyenAc());
-        holder.txtchap.setText(Act.getChapAc());
+        holder.txtchap.setText(Act.getChapAc()+"");
     }
 
     @Override

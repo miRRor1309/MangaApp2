@@ -1,6 +1,7 @@
 package com.example.mangaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +37,8 @@ ArrayList<Action>arr_Action;
         arr_Action=new ArrayList<>();
         actionAdapter = new ActionAdapter(this,arr_Action);
         recyclerViewAction.setAdapter(actionAdapter);
-        recyclerViewAction.setLayoutManager(new LinearLayoutManager(this));
+        GridLayoutManager gridLayoutManager=new GridLayoutManager(this,3);
+        //recyclerViewAction.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewAction.setLayoutManager(gridLayoutManager);
     }
 }
