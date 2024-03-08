@@ -7,13 +7,6 @@
     android:orientation="vertical"
     tools:context=".ShounenActivity">
 
-    <TextView
-        android:id="@+id/txtShounen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="100dp"
-        android:text="Shounen"
-        android:textSize="50dp" />
+
+
 </LinearLayout>

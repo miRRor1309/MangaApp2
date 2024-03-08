@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ActionActivity">
-    <TextView
-        android:id="@+id/txtAction"
+
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="100dp"
-        android:text="Action"
-        android:textSize="50dp" />
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerViewAction">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
