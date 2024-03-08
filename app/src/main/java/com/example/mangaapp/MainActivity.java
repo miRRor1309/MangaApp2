@@ -7,16 +7,19 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.SearchManager;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.RouteListingPreference;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -146,8 +149,21 @@ public class MainActivity extends AppCompatActivity {
             Intent i=new Intent(MainActivity.this ,UserInfoActivity.class);
             startActivity(i);
         }
+        if (item.getItemId() == R.id.itemAction){
+            Intent i=new Intent(MainActivity.this ,ActionActivity.class);
+            startActivity(i);
+        }
+        if (item.getItemId() == R.id.itemFantasy){
+            Intent i=new Intent(MainActivity.this ,FantasyActivity.class);
+            startActivity(i);
+        }
+        if (item.getItemId() == R.id.itemShounen){
+            Intent i=new Intent(MainActivity.this ,ShounenActivity.class);
+            startActivity(i);
+        }
         return super.onOptionsItemSelected(item);
     }
+
 
 
 }

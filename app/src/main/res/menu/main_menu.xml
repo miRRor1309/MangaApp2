@@ -13,9 +13,38 @@
         android:icon="@drawable/user1"
         android:title="Login/Register"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/menuTheLoai"
-        android:icon="@drawable/menu"
-        android:title="Login/Register"
-        app:showAsAction="always"/>
+   <item
+       android:id="@+id/menuTheLoai"
+       android:icon="@drawable/menu"
+       android:title="Login/Register"
+       app:showAsAction="always"
+
+       >
+       <menu>
+           <item
+               android:id="@+id/itemAction"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:title="Action"
+               />
+           <item
+               android:id="@+id/itemFantasy"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:title="Fantasy"
+               />
+           <item
+               android:id="@+id/itemShounen"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:title="Shounen"
+               />
+
+
+       </menu>
+    </item>
+
+
+
+
 </menu>
