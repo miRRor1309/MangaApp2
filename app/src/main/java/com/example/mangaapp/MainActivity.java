@@ -111,12 +111,12 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = database.rawQuery("select * from tblManga",null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
-            //Integer ma = cursor.getInt(0);
+            Integer ma = cursor.getInt(0);
             String ten = cursor.getString(1);
             String chap = cursor.getString(2);
             byte[] hinh = cursor.getBlob(3);
             String des = cursor.getString(4);
-            list.add(new Manga(chap,ten,hinh,des));
+            list.add(new Manga(chap,ten,hinh,des,ma));
             cursor.moveToNext();
         }
         cursor.close();
