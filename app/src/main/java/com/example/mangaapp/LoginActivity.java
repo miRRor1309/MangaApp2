@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             startActivity(intent);
                         }else {
-                            Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Đăng nhập không thành công",Toast.LENGTH_SHORT).show();
 
                         }
                     }

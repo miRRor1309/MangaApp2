@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">MangaApp</string>
     <string name="action_search">Search</string>
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_favorite">Yêu thích</string>
+    <string name="nav_account">Tài khoản</string>
+    <string name="nav_my_profile">Thông tin của tôi</string>
+    <string name="nav_chang_password">Thay đổi mật khẩu</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 </resources>

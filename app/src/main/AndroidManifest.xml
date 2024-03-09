@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
         tools:targetApi="31">
         <activity
             android:name=".ShounenActivity"
@@ -24,9 +24,7 @@
         <activity
             android:name=".StoryDescriptionActivity"
             android:exported="false" />
-        <activity
-            android:name=".UserInfoActivity"
-            android:exported="false" />
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
@@ -41,7 +39,9 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true">
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"
