@@ -7,19 +7,23 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.SearchManager;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.RouteListingPreference;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mangaapp._interface.IClickMangaListener;
 import com.example.mangaapp.adapter.MangaAdapter;
 import com.example.mangaapp.model.Manga;
 
@@ -45,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         processCopy();
         addControls();
-        //test connect 2
     }
 
     public String getDatabasePath(){
@@ -93,7 +96,12 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
         recyclerViewManga.setLayoutManager(gridLayoutManager);
 
-        mangaAdapter = new MangaAdapter(getMangaList());
+        mangaAdapter = new MangaAdapter(getMangaList(), new IClickMangaListener() {
+            @Override
+            public void onClickManga(Manga manga) {
+                onClickGoToDetail(manga);
+            }
+        });
         recyclerViewManga.setAdapter(mangaAdapter);
     }
 
@@ -103,11 +111,12 @@ public class MainActivity extends AppCompatActivity {
         Cursor cursor = database.rawQuery("select * from tblManga",null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
-            //Integer ma = cursor.getInt(0);
+            Integer ma = cursor.getInt(0);
             String ten = cursor.getString(1);
             String chap = cursor.getString(2);
             byte[] hinh = cursor.getBlob(3);
-            list.add(new Manga(chap,ten,hinh));
+            String des = cursor.getString(4);
+            list.add(new Manga(chap,ten,hinh,des,ma));
             cursor.moveToNext();
         }
         cursor.close();
@@ -146,8 +155,26 @@ public class MainActivity extends AppCompatActivity {
             Intent i=new Intent(MainActivity.this ,UserInfoActivity.class);
             startActivity(i);
         }
+        if (item.getItemId() == R.id.itemAction){
+            Intent i=new Intent(MainActivity.this ,ActionActivity.class);
+            startActivity(i);
+        }
+        if (item.getItemId() == R.id.itemFantasy){
+            Intent i=new Intent(MainActivity.this ,FantasyActivity.class);
+            startActivity(i);
+        }
+        if (item.getItemId() == R.id.itemShounen){
+            Intent i=new Intent(MainActivity.this ,ShounenActivity.class);
+            startActivity(i);
+        }
         return super.onOptionsItemSelected(item);
     }
 
-
+    private void onClickGoToDetail(Manga mg) {
+        Intent intent = new Intent(this, StoryDescriptionActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("MangaObject", mg);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }

@@ -43,4 +43,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("com.github.bumptech.glide:glide:4.10.0")
     implementation("com.squareup.okhttp3:okhttp:3.10.0")
+
 }

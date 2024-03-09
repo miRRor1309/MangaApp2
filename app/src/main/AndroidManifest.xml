@@ -13,7 +13,13 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".ForgotPassActivity"
+            android:name=".ShounenActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FantasyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActionActivity"
             android:exported="false" />
         <activity
             android:name=".StoryDescriptionActivity"
