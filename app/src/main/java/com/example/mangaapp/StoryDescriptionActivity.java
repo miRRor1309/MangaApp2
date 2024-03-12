@@ -2,6 +2,7 @@ package com.example.mangaapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -9,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,10 +36,24 @@ public class StoryDescriptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_story_description);
         addControls();
         catchAndShowData();
+        addEvents();
+    }
+
+    private void addEvents() {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        lvChap.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MangaChap mangaChap = mangaChapAdapter.getItem(position);
+                Intent intent = new Intent(StoryDescriptionActivity.this, HinhMangaActivity2.class);
+                intent.putExtra("mangaChap",mangaChap);
+                startActivity(intent);
             }
         });
     }
