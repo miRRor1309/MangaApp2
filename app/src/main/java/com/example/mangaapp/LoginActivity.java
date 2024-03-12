@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         addControls();
         addEvents();
-        //test connect 2
+        //test connect 3
     }
 
     private void addEvents() {
