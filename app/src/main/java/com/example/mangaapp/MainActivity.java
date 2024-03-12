@@ -34,20 +34,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     TextView txt_Username;
     private RecyclerView recyclerViewManga;
-    private MangaAdapter mangaAdapter = new MangaAdapter(getMangaList(), new IClickMangaListener() {
-        @Override
-        public void onClickManga(Manga manga) {
-            onClickGoToDetail(manga);
-        }
-
-        private void onClickGoToDetail(Manga mg) {
-            Intent intent= new Intent(MainActivity.this,StoryDescriptionActivity.class);
-            Bundle bundle=new Bundle();
-            bundle.putSerializable("MangaObject",mg);
-            //intent.putExtra(bundle);
-            startActivity(intent);
-        }
-    });
+    private MangaAdapter mangaAdapter;
     private SearchView searchView;
     public String DATABASE_NAME = "mangaappdb";
     public String DB_SUFFIX_PATH = "/databases/";
@@ -59,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         processCopy();
         addControls();
-        //test connect 2
     }
 
     public String getDatabasePath(){
@@ -107,6 +93,12 @@ public class MainActivity extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
         recyclerViewManga.setLayoutManager(gridLayoutManager);
 
+        mangaAdapter = new MangaAdapter(getMangaList(), new IClickMangaListener() {
+            @Override
+            public void onClickManga(Manga manga) {
+                onClickGoToDetail(manga);
+            }
+        });
         recyclerViewManga.setAdapter(mangaAdapter);
     }
 
@@ -154,4 +146,11 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    private void onClickGoToDetail(Manga mg) {
+        Intent intent = new Intent(this, StoryDescriptionActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("MangaObject", mg);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }
