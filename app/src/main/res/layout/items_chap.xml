@@ -2,24 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="60dp"
-    android:padding="5dp"
     android:gravity="center_vertical"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="5dp">
+
     <TextView
+        android:id="@+id/txtChapName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Chap 1"
         android:textColor="@color/black"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:id="@+id/txtChapName"/>
-    
+        android:textStyle="bold" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="8/3/2024"
         android:id="@+id/txtDateChap"
-        android:textSize="13sp"/>
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="8/3/2024"
+        android:textColor="@color/black"
+        android:textSize="13sp" />
 
 </LinearLayout>
