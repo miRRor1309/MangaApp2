@@ -68,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
                             userInfo.put("UserEmail",edt_Email.getText().toString());
                             userInfo.put("UserName",edt_UserName.getText().toString());
                             ///
-                            userInfo.put("isUser",1);
+                            userInfo.put("isUser","1");
                             ///
                             df.set(userInfo);
                             ////
