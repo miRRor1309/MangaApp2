@@ -37,7 +37,13 @@
                 android:gravity="left"
                 android:hint="Nhập Email"
                 android:inputType="text" />
-
+            <EditText
+                android:id="@+id/edt_UserName"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:gravity="left"
+                android:hint="Tên tài khoản"
+                android:inputType="text" />
             <EditText
                 android:id="@+id/edt_Pass"
                 android:layout_width="200dp"
