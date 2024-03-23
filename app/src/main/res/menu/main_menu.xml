@@ -9,7 +9,7 @@
         app:showAsAction="always"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
     <item
-        android:id="@+id/menuLogin"
+        android:id="@+id/mnuUser"
         android:icon="@drawable/user1"
         android:title="Login/Register"
         app:showAsAction="always"/>

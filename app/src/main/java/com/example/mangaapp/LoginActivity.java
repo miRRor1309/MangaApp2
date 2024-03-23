@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +15,14 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -24,7 +30,9 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_Login,btn_Cancel,btn_goToRegister;
     private LinearLayout layoutForgotPassword;
 
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
+    FirebaseFirestore fStore;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,23 +46,12 @@ public class LoginActivity extends AppCompatActivity {
         layoutForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickForgotPassword();
-            }
-
-            private void onClickForgotPassword() {
-                Intent i= new Intent(LoginActivity.this, ForgotPassActivity.class);
-                startActivity(i);
+                Intent intent= new Intent(LoginActivity.this, ForgotPassActivity.class);
+                startActivity(intent);
             }
         });
 
 
-
-
-
-
-
-
-        mAuth=FirebaseAuth.getInstance();
 
         btn_Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,25 +92,47 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.signInWithEmailAndPassword(edt_Email.getText().toString(),edt_Pass.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(getApplicationContext(),"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                    public void onSuccess(AuthResult authResult) {
+                        Toast.makeText(LoginActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
+                        checkUserAccessLevel(authResult.getUser().getUid());
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
 
-                            startActivity(intent);
-                        }else {
-                            Toast.makeText(getApplicationContext(),"Đăng nhập không thành công",Toast.LENGTH_SHORT).show();
-
-                        }
                     }
                 });
             }
         });
     }
 
+    private void checkUserAccessLevel(String uid) {
+        DocumentReference df=fStore.collection("Users").document(uid);
+        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Log.d("TAG","onSuccess: " + documentSnapshot.getData());
+                //check user hay admin
+
+                if(documentSnapshot.getString("isAdmin" )!=null){
+                    startActivity(new Intent(getApplicationContext(),CreateActivity.class));
+                    finish();
+
+                }
+                if (documentSnapshot.getString("isUser")!=null){
+
+                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    finish();
+                }
+            }
+        });
+    }
+
     private void addControls() {
+        mAuth=FirebaseAuth.getInstance();
+        fStore=FirebaseFirestore.getInstance();
         edt_Pass=findViewById(R.id.edt_Pass);
         edt_Email=findViewById(R.id.edt_Email);
         btn_Login=findViewById(R.id.btn_Login);
@@ -121,4 +140,14 @@ public class LoginActivity extends AppCompatActivity {
         btn_goToRegister=findViewById(R.id.btn_goToRegister);
         layoutForgotPassword=findViewById(R.id.layout_forgot_pasword);
     }
+
+    /*@Override
+    protected void onStart() {
+        if(FirebaseAuth.getInstance().getCurrentUser() != null)
+        {
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            finish();
+        }
+        super.onStart();
+    }*/
 }

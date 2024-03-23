@@ -16,7 +16,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerViewManga;
     private MangaAdapter mangaAdapter;
     private SearchView searchView;
+    private Button menuUser;
     public String DATABASE_NAME = "mangaappdb";
     public String DB_SUFFIX_PATH = "/databases/";
     public static SQLiteDatabase database = null;
@@ -121,6 +124,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==R.id.mnuUser){
+            Intent intent= new Intent(this,UserInfoActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater mnu=getMenuInflater();
         mnu.inflate(R.menu.main_menu,menu);
@@ -129,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         searchView = (SearchView) menu.findItem(R.id.menuSearch).getActionView();
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         searchView.setMaxWidth(Integer.MAX_VALUE);
+
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -143,6 +156,8 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
         return true;
     }
 

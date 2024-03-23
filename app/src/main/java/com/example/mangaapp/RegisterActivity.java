@@ -16,11 +16,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText edt_Email,edt_Pass;
+    EditText edt_Email,edt_Pass,edt_UserName;
     Button btn_goToLogin,btn_Register;
-    private FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
+    FirebaseFirestore fstore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +60,19 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            FirebaseUser user =mAuth.getCurrentUser();
                             Toast.makeText(getApplicationContext(),"Đăng kí thành công",Toast.LENGTH_SHORT).show();
                             Intent i= new Intent(RegisterActivity.this,MainActivity.class);
+                            DocumentReference df =fstore.collection("Users").document(user.getUid());
+                            Map<String,Object> userInfo= new HashMap<>();
+                            userInfo.put("UserEmail",edt_Email.getText().toString());
+                            userInfo.put("UserName",edt_UserName.getText().toString());
+                            ///
+                            userInfo.put("isUser","1");
+                            ///
+                            df.set(userInfo);
+                            ////
+
                             startActivity(i);
                         }else {
                             Toast.makeText(getApplicationContext(),"Đăng kí không thành công",Toast.LENGTH_SHORT).show();
@@ -73,6 +91,8 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        edt_UserName=findViewById(R.id.edt_UserName);
+        fstore=FirebaseFirestore.getInstance();
         edt_Email=findViewById(R.id.edt_Email);
         edt_Pass=findViewById(R.id.edt_Pass);
         btn_Register=findViewById(R.id.btn_Register);
