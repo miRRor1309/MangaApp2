@@ -5,13 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:foregroundTint="#B37D7D"
-    android:orientation="vertical"
     tools:context=".MainActivity">
-
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +20,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Header -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
@@ -44,8 +43,8 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="48dp"
-                    android:fontFamily="@font/baloo_bhaijaan"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/archivo_black"
                     android:text="Truyện tranh"
                     android:textColor="#FFFFFF"
                     android:textSize="35sp"
@@ -55,12 +54,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewManga"
-                android:layout_width="345dp"
-                android:layout_height="525dp"
-                android:layout_marginStart="40dp">
-
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp">
             </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>

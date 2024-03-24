@@ -2,6 +2,7 @@ package com.example.mangaapp.adapter;
 
 import android.provider.ContactsContract;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -56,6 +57,5 @@ public class ActionAdapter extends RecyclerView.Adapter<ActionAdapter.ViewHolder
             txtTenTruyen=itemView.findViewById(R.id.txtTenTruyen);
         }
     }
-
 
 }

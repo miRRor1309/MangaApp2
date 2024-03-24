@@ -13,10 +13,11 @@
         android:layout_height="76dp"
         android:background="#DD4040"
         android:gravity="center"
-        android:text="Story Name"
+        android:text="Mô tả truyện"
         android:textAlignment="center"
         android:textColor="#171616"
-        android:textSize="40dp" />
+        android:textSize="40dp"
+        android:fontFamily="@font/andika_new_basic_bold_italic"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

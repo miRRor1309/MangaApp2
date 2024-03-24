@@ -8,6 +8,7 @@
     android:background="@drawable/bg_pic2"
     tools:context=".ForgotPassActivity">
 
+
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="300dp"
@@ -16,17 +17,17 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintHorizontal_bias="0.594"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.329">
+        app:layout_constraintVertical_bias="0.638">
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Nhập email của bạn"
+            android:text="Nhập email"
             android:textSize="20dp"
             android:textStyle="bold" />
 
@@ -41,11 +42,11 @@
             android:textSize="20dp" />
 
         <Button
-            android:layout_marginTop="20dp"
             android:id="@+id/btn_GuiXacNhan"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10sp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/bg_button"
             android:padding="0.5sp"
             android:text="Gửi xác nhận"
@@ -53,11 +54,11 @@
             android:textSize="11sp" />
 
         <Button
-            android:layout_marginTop="20dp"
             android:id="@+id/btn_GoBack"
             android:layout_width="80dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10sp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/bg_button_dk"
             android:padding="0.5sp"
             android:text="Quay lại
