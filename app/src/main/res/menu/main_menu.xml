@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:textColor="#000000"
         android:id="@+id/menuSearch"
         android:icon="@drawable/search1"
         android:title="@string/action_search"
