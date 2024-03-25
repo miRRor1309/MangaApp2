@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class AdminActivity extends AppCompatActivity {
-    Button btnLogOut,btnAdd;
+    Button btnLogOut,btnAdd,btnBack;
     TextView txtUserEmail, txtUserName;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
@@ -45,6 +45,13 @@ public class AdminActivity extends AppCompatActivity {
         });
     }
     private void addEvents() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(AdminActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +72,7 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        btnBack=findViewById(R.id.btnBack);
         txtUserEmail=findViewById(R.id.txtUserEmail);
         txtUserName=findViewById(R.id.txtUserName);
         mAuth=FirebaseAuth.getInstance();

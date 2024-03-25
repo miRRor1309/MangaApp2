@@ -25,6 +25,11 @@ import android.widget.Toast;
 import com.example.mangaapp._interface.IClickMangaListener;
 import com.example.mangaapp.adapter.MangaAdapter;
 import com.example.mangaapp.model.Manga;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -39,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
     private MangaAdapter mangaAdapter;
     private SearchView searchView;
     private Button menuUser;
+    FirebaseAuth mAuth;
+    FirebaseFirestore fStore;
+
     public String DATABASE_NAME = "mangaappdb";
     public String DB_SUFFIX_PATH = "/databases/";
     public static SQLiteDatabase database = null;
@@ -49,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         processCopy();
         addControls();
+
     }
 
     public String getDatabasePath(){
@@ -89,8 +98,30 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void checkUserAccessLevel(String uid) {
+        DocumentReference df=fStore.collection("Users").document(uid);
+        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Log.d("TAG","onSuccess: " + documentSnapshot.getData());
+                //check user hay admin
 
+                if(documentSnapshot.getString("isAdmin" )!=null){
+                    startActivity(new Intent(getApplicationContext(),AdminActivity.class));
+                    finish();
+
+                }
+                if (documentSnapshot.getString("isUser")!=null){
+
+                    startActivity(new Intent(getApplicationContext(),UserInfoActivity.class));
+                    finish();
+                }
+            }
+        });
+    }
     private void addControls() {
+        mAuth=FirebaseAuth.getInstance();
+        fStore=FirebaseFirestore.getInstance();
         txt_Username=findViewById(R.id.edt_Email);
         recyclerViewManga = findViewById(R.id.recyclerViewManga);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
@@ -126,8 +157,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId()==R.id.mnuUser){
-            Intent intent= new Intent(this,UserInfoActivity.class);
-            startActivity(intent);
+            checkUserAccessLevel(mAuth.getUid());
         }
         return super.onOptionsItemSelected(item);
     }
