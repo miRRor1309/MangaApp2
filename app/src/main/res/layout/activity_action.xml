@@ -5,13 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ActionActivity">
+    tools:context=".ActionActivity"
+    >
 
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/back"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAction"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerViewAction">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="8dp">
 
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -38,7 +38,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="417dp"
+        android:layout_width="390dp"
         android:layout_height="300dp"
         android:background="@drawable/bg_edt_dk"
         android:gravity="center"
@@ -52,7 +52,7 @@
         <EditText
             android:id="@+id/edt_Email"
             android:layout_width="280dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:gravity="left"
             android:hint="Email"
             android:inputType="text"
@@ -61,7 +61,7 @@
         <EditText
             android:id="@+id/edt_Pass"
             android:layout_width="280dp"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:gravity="left"
             android:hint="Mật khẩu"
             android:inputType="textPassword"
@@ -90,6 +90,8 @@
                 android:background="@drawable/bg_button"
                 android:text="huỷ"
                 android:textColor="#FFFFFF" />
+
+
         </LinearLayout>
 
     </LinearLayout>
