@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         processCopy();
         addControls();
 
+
     }
 
     public String getDatabasePath(){
@@ -119,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
     private void addControls() {
         mAuth=FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
