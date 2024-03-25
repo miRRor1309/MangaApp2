@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                 //check user hay admin
 
                 if(documentSnapshot.getString("isAdmin" )!=null){
-                    startActivity(new Intent(getApplicationContext(),AdminActivity.class));
+                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
                     finish();
 
                 }
