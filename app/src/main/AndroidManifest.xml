@@ -25,6 +25,9 @@
         <activity android:name=".HinhMangaActivity2"
             android:exported="false"/>
         <activity
+            android:name=".HinhMangaActivity2"
+            android:exported="false" />
+        <activity
             android:name=".ChangePassActivity"
             android:exported="false" />
         <activity
