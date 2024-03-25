@@ -49,7 +49,7 @@ public class AdminActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(AdminActivity.this, CreateMangaActivity.class);
+                Intent i= new Intent(AdminActivity.this, CreateMangaActivity2.class);
                 startActivity(i);
             }
         });
