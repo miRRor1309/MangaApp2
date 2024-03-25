@@ -44,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/archivo_black"
+                    android:fontFamily="@font/baloo_bhaijaan"
                     android:text="Truyện tranh"
                     android:textColor="#FFFFFF"
                     android:textSize="35sp"

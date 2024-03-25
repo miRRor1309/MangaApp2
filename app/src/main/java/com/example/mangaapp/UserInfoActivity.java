@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserInfoActivity extends AppCompatActivity {
     TextView txtUserEmail, txtUserName;
-    Button btnLogOut,btnReturn;
+    Button btnLogOut,btnReturn,btnChangePass;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
 
@@ -26,6 +26,13 @@ public class UserInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
         addControls();
+        btnChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(UserInfoActivity.this,ChangePassActivity.class);
+                startActivity(intent);
+            }
+        });
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +69,7 @@ public class UserInfoActivity extends AppCompatActivity {
 
 
     private void addControls() {
+        btnChangePass=findViewById(R.id.btnChangePass);
         mAuth=FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
         txtUserEmail=findViewById(R.id.txtUserEmail);
