@@ -38,11 +38,7 @@ public class AdminActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
 
-    public static SQLiteDatabase database = null;
-    TextView txt_Username;
-    private RecyclerView recyclerViewManga;
-    private MangaAdapter mangaAdapter;
-    private SearchView searchView;
+
 
 
     @Override
