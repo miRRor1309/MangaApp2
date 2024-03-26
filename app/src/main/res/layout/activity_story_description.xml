@@ -40,12 +40,14 @@
                 android:src="@drawable/a1" />
 
             <TextView
+
                 android:id="@+id/txtDes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="start|top"
-                android:text="Call Me by Your Name (tạm dịch: Gọi em bằng tên anh) là một bộ phim tình cảm, chính kịch, tuổi mới lớn năm 2017 do Luca Guadagnino đạo diễn và James Ivory chắp bút, dựa trên cuốn tiểu thuyết cùng tên xuất bản vào năm 2007 của André Aciman. Đây là tác phẩm cuối cùng trong bộ ba mang tên  của đạo diễn Guadagnino, sau I Am Love (2009) và A Bigger Splash (2015). Lấy bối cảnh vùng nông thôn miền Bắc nước Ý năm 1983, Cal" />
+                android:text="Call Me by Your Name (tạm dịch: Gọi em bằng tên anh) là một bộ phim tình cảm, chính kịch, tuổi mới lớn năm 2017 do Luca Guadagnino đạo diễn và James Ivory chắp bút, dựa trên cuốn tiểu thuyết cùng tên xuất bản vào năm 2007 của André Aciman. Đây là tác phẩm cuối cùng trong bộ ba mang tên  của đạo diễn Guadagnino, sau I Am Love (2009) và A Bigger Splash (2015). Lấy bối cảnh vùng nông thôn miền Bắc nước Ý năm 1983, Cal"
+                android:textColor="#000000" />
 
 
         </LinearLayout>
