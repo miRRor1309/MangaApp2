@@ -35,10 +35,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="50dp">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="18dp"
+            android:text="Đổi màu app"
+            android:textSize="13dp"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/switcher"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:gravity="center"
+             />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="244dp"
         android:orientation="vertical"
-        android:paddingTop="20sp"
-        >
+        android:paddingTop="20sp">
 
         <Button
             android:id="@+id/btnChangePass"
@@ -46,7 +71,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:clickable="true"
-            android:gravity="center|start"
+            android:gravity="center"
             android:paddingStart="15sp"
             android:text="Đổi mật khẩu"
             android:textSize="20sp"
@@ -57,9 +82,10 @@
             android:id="@+id/btnLogOut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@null"
             android:clickable="true"
-            android:gravity="center|start"
+            android:gravity="center"
             android:paddingStart="15sp"
             android:text="Đăng xuất"
             android:textSize="20sp"
@@ -69,9 +95,10 @@
             android:id="@+id/btnReturn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@null"
             android:clickable="true"
-            android:gravity="center|start"
+            android:gravity="center"
             android:paddingStart="15sp"
             android:text="Quay lại"
             android:textSize="20sp"
